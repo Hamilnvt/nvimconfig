@@ -1,0 +1,101 @@
+if theme == "bamboo" then
+return {
+  'ribru17/bamboo.nvim',
+  lazy = false,
+  priority = 1000,
+  config = function()
+    require('bamboo').setup {
+      util = require('bamboo.util'),
+      style = "multiplex",
+      dim_inactive = false, -- Dim inactive windows/buffers
+      term_colors = true, -- Change terminal color as per the selected theme style
+      ending_tildes = false, -- Show the end-of-buffer tildes. By default they are hidden
+      cmp_itemkind_reverse = false, -- reverse item kind highlights in cmp menu
+
+      -- Change code style ---
+      -- Options are anything that can be passed to the `vim.api.nvim_set_hl` table
+      -- You can also configure styles with a string, e.g. keywords = 'italic,bold'
+      code_style = {
+        comments = {},
+        conditionals = {},
+          keywords = { bold = true },
+          functions = {},
+          namespaces = { italic = true },
+          parameters = { italic = true },
+          strings = {},
+          variables = {},
+        },
+
+        colors = {
+          normal_bg = '#0E2A20',
+          --normal_bg = '#12372A',
+          normal_fg = '#ADBC9F',
+
+          --comment = '#758476',
+          comment = '#546354',
+          --comment = '#667A67',
+          --comment_green = '#88A785',
+          --comment = '#F9C7CF',
+
+          cursorLineNr = '#FBFADA',
+          --cursorLineNr = '#FBFADA',
+
+          string = '#EEA1AE',
+          --string = '#AE9FBC',
+          --string = '#F1798D',
+          --string = '#F9C7CF',
+
+          number = '#4AC260',
+          constant = "#CDF0EA",
+
+          statement = '#4DD732',
+          function_ = '#CB346A',
+          type = '#81CF72',
+
+          preprocessor = '#612DD2',
+        },
+
+        highlights = {
+          Normal = { fg = '$normal_fg' , bg = '$normal_bg'},
+          Comment = { fg = '$comment' },
+          CursorLine = { bg = '$normal_bg' },
+          CursorLineNr = { fg = '$cursorLineNr' , guifg = "bold" },
+          LineNr = { fg = '$comment' },
+          Folded = { bg = '$normal_fg', fg = '$normal_bg' },
+          EndOfBuffer = { fg = '$normal_bg' },
+          MatchParen = { fg = '$type' },
+          -- ancora da fare
+          Constant  =    { fg = '$constant' }, -- (*) Any constant
+          String    =    { fg = '$string' }, --   A string constant: "this is a string"
+          -- Character      { }, --   A character constant: 'c', '\n'
+          Number    =    { fg = '$number' }, --   A number constant: 234, 0xff
+          -- Boolean        { }, --   A boolean constant: TRUE, false
+          -- Float          { }, --   A floating point constant: 2.3e10
+      
+          Identifier =   { fg = '$normal_fg' }, -- (*) Any variable name
+          Function   =   { fg = '$function_' }, --   Function name (also: methods for classes)
+      
+          Statement  =   { fg = "$statement" }, -- (*) Any statement
+          -- Conditional    { }, --   if, then, else, endif, switch, etc.
+          -- Repeat         { }, --   for, do, while, etc.
+          Label      =   { fg = '$comment' }, --   case, default, etc.
+          -- Operator       { }, --   "sizeof", "+", "*", etc.
+          -- Keyword        { }, --   any other keyword
+          -- Exception      { }, --   try, catch, throw
+      
+          PreProc    =   { fg = "#905235" }, -- (*) Generic Preprocessor
+          -- Include        { }, --   Preprocessor #include
+          -- Define         { }, --   Preprocessor #define
+          -- Macro          { }, --   Same as Define
+          -- PreCondit      { }, --   Preprocessor #if, #else, #endif, etc.
+          
+          Type       =   { fg = "$type" }, -- (*) int, long, char, etc.
+          -- StorageClass   { }, --   static, register, volatile, etc.
+          -- Structure      { }, --   struct, union, enum, etc.
+          -- Typedef        { }, --   A typedef
+        }
+      }
+      require('bamboo').load()
+    end,
+  } 
+end
