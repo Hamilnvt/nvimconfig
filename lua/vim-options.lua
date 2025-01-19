@@ -15,3 +15,6 @@ vim.cmd("set ignorecase")
 vim.cmd("set smartcase")
 
 vim.cmd("set splitbelow")
+
+--  cose di fb
+vim.cmd("set wildmode=longest,list")

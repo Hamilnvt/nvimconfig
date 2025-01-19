@@ -26,6 +26,17 @@ map('n', '<leader>ee', ':split<CR>:terminal<CR>i./', { desc = '[E]xecute (execut
 
 map('n', '<leader>el', ':wa<CR>:split<CR>:terminal<CR>i<C-p><CR>', { desc = '[E]xecute [L]ast'})
 
+-- Move lines and chars
+map('n', 'mu', 'ddkP', { desc = "[M]ove line [U]p" })
+map('n', 'md', 'ddp', { desc = "[M]ove line [D]own" })
+map('n', 'ml', 'xhP', { desc = "[M]ove character [L]eft" })
+map('n', 'mr', 'xp', { desc = "[M]ove character [R]ight" })
+
+map('v', 'mu', 'dkP', { desc = "[M]ove lines [U]p" })
+map('v', 'md', 'dp', { desc = "[M]ove lines [D]own" })
+map('v', 'ml', 'xhP', { desc = "[M]ove characters [L]eft" })
+map('v', 'mr', 'xp', { desc = "[M]ove characters [R]ight" })
+
 -- Telescope
 map('n', '<leader>fg', ':Telescope live_grep<CR>', { desc = '[F]ind with live-[G]rep'})
 map('n', '<leader>ff', ':Telescope find_files<CR>', { desc = '[F]ind [F]iles'})
@@ -40,8 +51,5 @@ map('n', '<leader>ca', 'vim.lsp.buf.code_action', { desc = "[C]ode [A]ction"})
 map('n', '<C-h>', ':lua require("harpoon.ui").toggle_quick_menu()<CR>', { desc = "[H]arpoon menu"})
 map('n', '<C-a>', ':lua require("harpoon.mark").add_file()<CR>', { desc = "[H]arpoon [A]dd file"})
 --map('n', '<leader>hq', ':lua require("harpoon.ui").nav_file(1)<CR>', { desc = "[H]arpoon go to file 1"})
---map('n', '<leader>hw', ':lua require("harpoon.ui").nav_file(2)<CR>', { desc = "[H]arpoon go to file 2"})
---map('n', '<leader>he', ':lua require("harpoon.ui").nav_file(3)<CR>', { desc = "[H]arpoon go to file 3"})
---map('n', '<leader>hr', ':lua require("harpoon.ui").nav_file(4)<CR>', { desc = "[H]arpoon go to file 4"})
-map('n', '<C-k>', ':lua require("harpoon.ui").nav_next()<CR>', { desc = "[H]arpoon go to file 1"})
-map('n', '<C-j>', ':lua require("harpoon.ui").nav_prev()<CR>', { desc = "[H]arpoon go to file 1"})
+map('n', '<C-j>', ':lua require("harpoon.ui").nav_prev()<CR>', { desc = "[H]arpoon go to left"})
+map('n', '<C-k>', ':lua require("harpoon.ui").nav_next()<CR>', { desc = "[H]arpoon go to right"})
